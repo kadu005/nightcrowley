@@ -1,0 +1,274 @@
+<!-- ================================================================= -->
+<!-- FICHEIRO: index.html                                              -->
+<!-- DESCRIÇÃO: Estrutura HTML Multi-Página (Landing Page, Catálogo e  -->
+<!--            Perfil do Utilizador) para E-commerce Gótico.          -->
+<!-- ================================================================= -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NightCrowley - Dark Gothic Store</title>
+    
+    <!-- Importação de Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Folha de Estilos Interna/Externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =============================================================== -->
+    <!-- COMPONENTE: Mockup do Telemóvel / Container Desktop             -->
+    <!-- =============================================================== -->
+    <div class="phone-container">
+        
+        <!-- COMPONENTE: Cabeçalho Superior (Header com Menu Desktop) -->
+        <header class="app-header">
+            <button class="icon-btn" id="back-btn" title="Voltar"><i class="fas fa-chevron-left"></i></button>
+            <div class="brand-logo">NIGHT CROWLEY</div>
+
+            <!-- MENU DESKTOP (Aparece em telas a partir de 768px) -->
+            <nav class="desktop-nav-links">
+                <button class="nav-link active" onclick="switchTab('home')">Início</button>
+                <button class="nav-link" onclick="switchTab('catalog')">Catálogo</button>
+                <button class="nav-link" onclick="switchTab('profile')">Perfil</button>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn" id="cart-btn" title="Carrinho">
+                    <i class="fas fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- =============================================================== -->
+        <!-- COMPONENTE: Área Dinâmica de Conteúdo (Páginas)                -->
+        <!-- =============================================================== -->
+        <main class="app-content" id="app-content">
+            
+            <!-- ----------------------------------------------------------- -->
+            <!-- PÁGINA 1: LANDING PAGE (Início / Destaques)                 -->
+            <!-- ----------------------------------------------------------- -->
+            <section class="page-view active-page" id="page-home">
+                
+                <!-- Bloco Hero da Marca -->
+                <div class="hero-section">
+                    <h1 class="hero-title">Night,<br>Crowley</h1>
+                    <p class="hero-subtitle">Vestuário, Relíquias & Acessórios das Sombras</p>
+                    <div class="hero-icon"><i class="fas fa-moon"></i></div>
+                </div>
+
+                <!-- Banner Promocional -->
+                <div class="promo-banner">
+                    <div class="image-frame banner-frame">
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Coleção de Inverno Gótica" class="framed-img">
+                        <div class="banner-overlay">
+                            <span>COLEÇÃO DE INVERNO</span>
+                            <h3>Sermons of Silk & Leather</h3>
+                            <button class="btn-primary" onclick="switchTab('catalog')">Explorar Coleção</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secção de Vitrine em Destaque -->
+                <div class="menu-section">
+                    <div class="section-header">
+                        <span>—</span>
+                        <h2>Lançamentos em Destaque</h2>
+                        <span>—</span>
+                    </div>
+
+                    <div class="featured-grid">
+                        
+                        <!-- Produto 1 -->
+                        <div class="product-card" data-product-id="1">
+                            <div class="image-frame product-frame">
+                                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80" alt="Sobretudo Vampírico" class="framed-img">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-tag">Vestuário</span>
+                                <h3 class="product-title">Sobretudo Manteau Velvet</h3>
+                                <p class="product-price">R$ 389,00</p>
+                            </div>
+                        </div>
+
+                        <!-- Produto 2 -->
+                        <div class="product-card" data-product-id="2">
+                            <div class="image-frame product-frame">
+                                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" alt="Anel de Prata Serpentino" class="framed-img">
+                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-tag">Acessórios</span>
+                                <h3 class="product-title">Anel Serpent's Coil (Prata 925)</h3>
+                                <p class="product-price">R$ 149,00</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ----------------------------------------------------------- -->
+            <!-- PÁGINA 2: CATÁLOGO COMPLETO (Com Filtros e Pesquisa)        -->
+            <!-- ----------------------------------------------------------- -->
+            <section class="page-view" id="page-catalog">
+                
+                <div class="section-title-wrapper">
+                    <h2 class="page-header-title">CATÁLOGO DAS SOMBRAS</h2>
+                </div>
+
+                <!-- Barra de Pesquisa -->
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Buscar por peça, filme, anime ou marca...">
+                </div>
+
+                <!-- Bloco de Filtros Múltiplos -->
+                <div class="filter-wrapper">
+                    
+                    <!-- Filtro por Categoria de Item -->
+                    <div class="filter-group">
+                        <label class="filter-label"><i class="fas fa-layer-group"></i> Categoria:</label>
+                        <select id="filter-type" class="gothic-select">
+                            <option value="all">Todas as Categorias</option>
+                            <option value="vestuario">Vestuário</option>
+                            <option value="acessorios">Acessórios & Joias</option>
+                            <option value="calcados">Calçados</option>
+                            <option value="decoracao">Decoração & Arte</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtro por Tema / Cultura Pop -->
+                    <div class="filter-group">
+                        <label class="filter-label"><i class="fas fa-film"></i> Tema / Anime / Filme / Série:</label>
+                        <select id="filter-theme" class="gothic-select">
+                            <option value="all">Todos os Temas</option>
+                            <option value="vampire">Vampiros / Neogótico</option>
+                            <option value="cyberpunk">Cyber / Industrial</option>
+                            <option value="death-note">Death Note</option>
+                            <option value="wednesday">Wednesday / Família Addams</option>
+                            <option value="berserk">Berserk</option>
+                            <option value="the-crow">The Crow (O Corvo)</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtro por Marca -->
+                    <div class="filter-group">
+                        <label class="filter-label"><i class="fas fa-tag"></i> Marca:</label>
+                        <select id="filter-brand" class="gothic-select">
+                            <option value="all">Todas as Marcas</option>
+                            <option value="crowley-craft">Crowley Craft (Própria)</option>
+                            <option value="killstar">Killstar</option>
+                            <option value="disturbia">Disturbia</option>
+                            <option value="restyle">Restyle</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Grelha de Produtos do Catálogo -->
+                <div class="catalog-grid" id="catalog-grid">
+                    <!-- Conteúdo renderizado dinamicamente via app.js -->
+                </div>
+
+            </section>
+
+            <!-- ----------------------------------------------------------- -->
+            <!-- PÁGINA 3: PERFIL DO UTILIZADOR (Pedidos e Desejos)           -->
+            <!-- ----------------------------------------------------------- -->
+            <section class="page-view" id="page-profile">
+                
+                <!-- Cartão do Utilizador -->
+                <div class="user-card">
+                    <div class="image-frame avatar-frame">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Avatar do Perfil" class="framed-img">
+                    </div>
+                    <div class="user-details">
+                        <h3 class="user-name">Lady Morgana Crowley</h3>
+                        <p class="user-level"><i class="fas fa-skull"></i> Membro do Círculo Interno</p>
+                    </div>
+                </div>
+
+                <!-- Separadores Internos do Perfil -->
+                <div class="profile-tabs">
+                    <button class="profile-tab-btn active" id="tab-orders-btn" onclick="toggleProfileSubTab('orders')">Meus Pedidos</button>
+                    <button class="profile-tab-btn" id="tab-wishlist-btn" onclick="toggleProfileSubTab('wishlist')">Lista de Desejos</button>
+                </div>
+
+                <!-- Conteúdo 1: Histórico de Pedidos -->
+                <div class="profile-subcontent" id="subcontent-orders">
+                    
+                    <div class="order-card">
+                        <div class="order-header">
+                            <span class="order-id">#NC-89421</span>
+                            <span class="order-status status-delivered">Entregue</span>
+                        </div>
+                        <p class="order-date">Realizado em: 12 de Outubro de 2026</p>
+                        <div class="order-items-preview">
+                            <p>1x Corset Gothic Lace - Tam M</p>
+                            <p>1x Gargantilha Pentagrama Velvet</p>
+                        </div>
+                        <div class="order-footer">
+                            <span>Total: <strong>R$ 310,00</strong></span>
+                            <button class="btn-outline-sm">Ver Detalhes</button>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-header">
+                            <span class="order-id">#NC-90112</span>
+                            <span class="order-status status-transit">Em Trânsito</span>
+                        </div>
+                        <p class="order-date">Realizado em: 02 de Novembro de 2026</p>
+                        <div class="order-items-preview">
+                            <p>1x Bota Platform Demon-102</p>
+                        </div>
+                        <div class="order-footer">
+                            <span>Total: <strong>R$ 540,00</strong></span>
+                            <button class="btn-outline-sm">Rastrear</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Conteúdo 2: Lista de Itens Desejados (Wishlist) -->
+                <div class="profile-subcontent hidden" id="subcontent-wishlist">
+                    <div class="wishlist-grid" id="wishlist-container">
+                        <!-- Renderizado dinamicamente via JS -->
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- =============================================================== -->
+        <!-- COMPONENTE: Barra de Navegação Inferior (Mobile)                -->
+        <!-- =============================================================== -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
+                <i class="fas fa-house"></i>
+                <span>Início</span>
+            </button>
+            <button class="nav-item" data-tab="catalog" onclick="switchTab('catalog')">
+                <i class="fas fa-border-all"></i>
+                <span>Catálogo</span>
+            </button>
+            <button class="nav-item" data-tab="profile" onclick="switchTab('profile')">
+                <i class="fas fa-user-ninja"></i>
+                <span>Perfil</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <!-- Script Principal JS -->
+    <script src="app.js"></script>
+</body>
+</html>
